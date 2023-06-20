@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .box {
+        width: 500px;
+        margin: 0 auto;
+        margin-top: 200px;
+      }
+      button {
+        display: block;
+        width: 300px;
+        height: 60px;
+        font-size: 20px;
+      }
+      .timer {
+        color: red;
+        font-size: 24px;
+      }
+      .a1 {
+        width: 100%;
+        text-align: center;
+        font-size: 24px;
+        display: flex;
+        margin-top: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box">
+      <button id="myButton">Timing start</button>
+      <div class="a1">
+        <span>Time passed:</span>&nbsp;&nbsp;
+        <div id="timer" style="color: red">0</div>
+        &nbsp;&nbsp;<span>S</span>
+      </div>
+    </div>
+
+    <script>
+      var myButton = document.getElementById("myButton");
+      var timer = document.getElementById("timer");
+      var count = 0;
+      var intervalId;
+      var sum = 0;
+
+      myButton.addEventListener("click", function () {
+        count++;
+        if (count % 2 === 1) {
+          // 奇数次点击，开始计时
+          intervalId = setInterval(function () {
+            sum += 1;
+            timer.innerHTML = sum;
+          }, 1000);
+        } else {
+          // 偶数次点击，暂停计时
+          clearInterval(intervalId);
+        }
+      });
+    </script>
+  </body>
+</html>
